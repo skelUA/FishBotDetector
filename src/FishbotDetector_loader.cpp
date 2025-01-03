@@ -1,6 +1,6 @@
 void AddFishBotDetectorScripts();
 
-void Addmod_Fish_Bot_detectorScripts()
+void Addmod_fish_bot_detectorScripts()
 {
     AddFishBotDetectorScripts();
 }
