@@ -1,7 +1,7 @@
-void Addmod_fishbotdetectorScripts();
+void AddFishbotdetectorScripts();
 
-void Addmod_fishbot_detectorScripts()
+void Addmod_Fishbot_detectorScripts()
 {
-    Addmod_fishbotdetectorScripts();
+    AddFishbotdetectorScripts();
 }
 
