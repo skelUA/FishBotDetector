@@ -14,10 +14,10 @@ struct FishInfo
     uint32 suspiciousCount;
 };
 
-class FishbotDetector : public PlayerScript
+class FishBotDetector : public PlayerScript
 {
 public:
-    FishbotDetector() : PlayerScript("FishBotDetector")
+    FishBotDetector() : PlayerScript("FishBotDetector")
     {
         // Зчитуємо з .conf
         m_minInterval = sConfigMgr->GetOption<int32>("FishBotDetector.MinInterval", 10);
