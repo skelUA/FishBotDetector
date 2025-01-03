@@ -86,7 +86,7 @@ private:
 };
 
 // Ініціалізація статичної змінної
-std::unordered_map<ObjectGuid, FishInfo> FishbotDetector::m_fishData;
+std::unordered_map<ObjectGuid, FishInfo> FishBotDetector::m_fishData;
 
 void Addmod_FishBotDetectorScripts()
 {
