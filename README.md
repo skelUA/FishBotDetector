@@ -3,9 +3,9 @@
 Цей модуль для AzerothCore виявляє підозрілу (надто часту) риболовлю,
 можливо спричинену "fishbot" чи іншим ботом.
 
-## Як встановити
+Встановлення:
+Параметри з configs\modules\mod_fishbot_detector.conf перенести в configs\worldserver.conf 
 
-1. Розмістіть папку `mod-fishbot-detector` в `azerothcore/modules/`.
-2. У `azerothcore/modules/CMakeLists.txt` додайте:
-   ```cmake
-   add_subdirectory("mod-fishbot-detector")
+TODO:
+*Зробити завантаження параметрів з configs\modules\mod_fishbot_detector.conf
+*Відключити глобальне оповіщення або замінити на оповіщення ГМу

@@ -20,10 +20,10 @@ public:
     FishbotDetector() : PlayerScript("FishbotDetector")
     {
         // Зчитуємо з .conf
-        m_minInterval = sConfigMgr->GetIntDefault("FishbotDetector.MinInterval", 10);
-        m_maxStrikes  = sConfigMgr->GetIntDefault("FishbotDetector.MaxStrikes", 5);
+        m_minInterval = sConfigMgr->GetOption<int32>("FishbotDetector.MinInterval", 10);
+        m_maxStrikes  = sConfigMgr->GetOption<int32>("FishbotDetector.MaxStrikes", 5);
 
-        TC_LOG_INFO("server.loading",
+        LOG_INFO("server.loading",
             "[FishbotDetector] MinInterval = %u, MaxStrikes = %u",
             m_minInterval, m_maxStrikes
         );
@@ -31,7 +31,7 @@ public:
 
     // Подія "OnSpellCast" з master-ґілки AzerothCore:
     //   virtual void OnSpellCast(Player* player, Spell* spell);
-    void OnSpellCast(Player* player, Spell* spell) override
+    void OnSpellCast(Player* player, Spell* spell, bool skipCheck) override
     {
         if (!player || !spell)
             return;
@@ -45,7 +45,8 @@ public:
 
         if (spellInfo->Id == FISHING_SPELL_ID)
         {
-            uint64 guid = player->GetGUID();
+            ObjectGuid guid = player->GetGUID();
+
             time_t now  = time(nullptr);
 
             FishInfo& info = m_fishData[guid];
@@ -64,6 +65,7 @@ public:
                         " підозріло часто закидає вудку! (fishbot?)"
                     );
 
+                    LOG_DEBUG("module.fishbotdetector", "Player {} fishing too often", std::string(player->GetName()));
                     // Можна також:
                     // player->KickPlayer();
                     // info.suspiciousCount = 0; // щоб не спамити, якщо залишати гравця в грі
@@ -78,15 +80,15 @@ public:
     }
 
 private:
-    static std::unordered_map<uint64, FishInfo> m_fishData;
+    static std::unordered_map<ObjectGuid, FishInfo> m_fishData;
     uint32 m_minInterval;
     uint32 m_maxStrikes;
 };
 
 // Ініціалізація статичної змінної
-std::unordered_map<uint64, FishInfo> FishbotDetector::m_fishData;
+std::unordered_map<ObjectGuid, FishInfo> FishbotDetector::m_fishData;
 
-void Addmod_fishbot_detectorScripts()
+void Addmod_fishbotdetectorScripts()
 {
     new FishbotDetector();
 }
