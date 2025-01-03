@@ -5,3 +5,9 @@ FishbotDetector.MinInterval = 10
 # Скільки разів поспіль можна "зловити" дуже частий каст рибалки,
 # перш ніж згенерувати попередження.
 FishbotDetector.MaxStrikes  = 5
+
+
+# LOG
+Appender.FishbotDetector=2,5,1,FishbotDetector.log,a
+
+Logger.module.fishbotdetector=5,Console FishbotDetector
