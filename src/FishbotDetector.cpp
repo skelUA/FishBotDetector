@@ -17,14 +17,14 @@ struct FishInfo
 class FishbotDetector : public PlayerScript
 {
 public:
-    FishbotDetector() : PlayerScript("FishbotDetector")
+    FishbotDetector() : PlayerScript("FishBotDetector")
     {
         // Зчитуємо з .conf
-        m_minInterval = sConfigMgr->GetOption<int32>("FishbotDetector.MinInterval", 10);
-        m_maxStrikes  = sConfigMgr->GetOption<int32>("FishbotDetector.MaxStrikes", 5);
+        m_minInterval = sConfigMgr->GetOption<int32>("FishBotDetector.MinInterval", 10);
+        m_maxStrikes  = sConfigMgr->GetOption<int32>("FishBotDetector.MaxStrikes", 5);
 
         LOG_INFO("server.loading",
-            "[FishbotDetector] MinInterval = %u, MaxStrikes = %u",
+            "[FishBotDetector] MinInterval = %u, MaxStrikes = %u",
             m_minInterval, m_maxStrikes
         );
     }
@@ -88,7 +88,7 @@ private:
 // Ініціалізація статичної змінної
 std::unordered_map<ObjectGuid, FishInfo> FishbotDetector::m_fishData;
 
-void Addmod_fishbotdetectorScripts()
+void Addmod_FishBotDetectorScripts()
 {
-    new FishbotDetector();
+    new FishBotDetector();
 }

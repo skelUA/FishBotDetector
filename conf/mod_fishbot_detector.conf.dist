@@ -1,13 +1,13 @@
 # Якщо різниця між двома кастами Fishing менша за це значення (в секундах),
 # вважається "дуже частою" і збільшується лічильник підозр.
-FishbotDetector.MinInterval = 10
+FishBotDetector.MinInterval = 10
 
 # Скільки разів поспіль можна "зловити" дуже частий каст рибалки,
 # перш ніж згенерувати попередження.
-FishbotDetector.MaxStrikes  = 5
+FishBotDetector.MaxStrikes  = 5
 
 
 # LOG
-Appender.FishbotDetector=2,5,1,FishbotDetector.log,a
+Appender.FishBotDetector=2,5,1,FishbotDetector.log,a
 
-Logger.module.fishbotdetector=5,Console FishbotDetector
+Logger.module.fishotdetector=5,Console FishbotDetector
